@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/7336592461.js" crossorigin="anonymous"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="assets/css/home-page.css">
+	<title>Mobile Shop</title>
+</head>
+<body>
+	<header id="navbarContainer"></header>
+	<main>
+
+		<div class="container mt-3">
+			<div class="heading" ><h3>Discount today</h3></div>
+			<div class="deal-content">
+				<div class="row deal-content-inner">
+					<a href="#!" class="card col mt-3 col-lg-3">
+						<img src="https://salt.tikicdn.com/cache/280x280/ts/product/8e/d0/93/43dc2e05448b5db1c95fa4b57058d3d8.jpg" alt="">
+						<p>Rs. 4216000</p>
+						<p>50% off</p>
+					</a>
+					<a href="#!" class="card col mt-3 col-lg-3">
+						<img src="https://salt.tikicdn.com/cache/280x280/ts/product/3b/11/55/761e7c7bef6f8bbe78dce7616ea79af1.jpg" alt="">
+						<p>Rs. 3790000</p>
+						<p>23% off</p>
+					</a>
+					<a href="#!" class="card col mt-3 col-lg-3">
+						<img src="https://salt.tikicdn.com/cache/280x280/ts/product/6b/f1/44/894cfbc05096688061fb11ce3bf7e012.jpg" alt="">
+						<p>Rs. 24990000</p>
+						<p>40% off</p>
+					</a>
+					<a href="#!" class="card col mt-3 col-lg-3">
+						<img src="https://salt.tikicdn.com/cache/280x280/ts/product/85/3f/31/db76beaf4ad9454a6b816c508be02511.jpg" alt="">
+						<p>Rs. 6990000</p>
+						<p>60% off</p>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="container mt-3">
+			<div class="heading"><h3>Suggestion today</h3></div>
+			<div id="products" class="row"></div>
+			<div id="result-products" class="row"></div>
+			<div class="mt-4 text-center mb-4">
+				<button id="getMoreItem" class="btn btn-primary" onclick="getProducts()" >see more</button>
+			</div>
+		</div>
+	</main>
+	<footer id="footerContainer"></footer>
+
+	<!--- slide --->
+	<script>
+		var slideIndex = 1;
+		showSlides(slideIndex);
+
+		// Next/previous controls
+		function plusSlides(n) {
+			showSlides(slideIndex += n);
+		}
+
+		// Thumbnail images controls
+		function currentSlide(n) {
+			showSlides(slideIndex = n);
+		}
+
+		function showSlides(n) {
+			var i;
+			var slides = document.getElementsByClassName("mySlides");
+			var dots = document.getElementsByClassName("dot");
+			if (n > slides.length) {slideIndex = 1}
+			if (n < 1) {slideIndex = slides.length}
+			for (i = 0; i < slides.length; i++) {
+				slides[i].style.display = "none";
+			}
+			for (i = 0; i < dots.length; i++) {
+				dots[i].className = dots[i].className.replace(" active", "");
+			}
+			slides[slideIndex-1].style.display = "block";
+			dots[slideIndex-1].className += " active";
+		}
+	</script>
+
+	<script src="assets/javascript/data.js"></script>
+	<script type="application/javascript">
+		const searchInput = document.getElementById("searchInput");
+		const resultProducts = document.getElementById("result-products");
+		const products = document.getElementById("products");
+		let count = 0;
+
+		const createProduct = (name, brand = "", price = "", thumbnail = "") => {
+			const cardEle = document.createElement("div");
+			const imgChildEle = document.createElement("img");
+			const titleEle = document.createElement("h5");
+			const descriptionEle = document.createElement("p");
+			const anchorEle = document.createElement("a");
+			const cardBody = document.createElement("div");
+
+			cardEle.classList.add("card");
+			imgChildEle.classList.add("card-img-top");
+			titleEle.classList.add("card-title");
+			descriptionEle.classList.add("card-text");
+			anchorEle.classList.add("btn");
+			anchorEle.classList.add("btn-primary");
+			cardBody.classList.add("card-body");
+
+			cardEle.style.background = "#f1f1f1";
+			imgChildEle.style.width = "100%";
+			imgChildEle.style.margin = "2px"
+			imgChildEle.style.borderRadius = "10px"
+			//imgChildEle.style.height = "280px";
+			cardBody.style.position  = "relative";
+			cardBody.style.padding = "25px";
+			cardBody.style.marginBottom  = "10px";
+			anchorEle.style.position = "absolute";
+			anchorEle.style.bottom = "0px";
+			anchorEle.style.right = "5px";
+
+			titleEle.textContent = name;
+			descriptionEle.textContent = `Price: ${price} - Trademark: ${brand}`;
+			anchorEle.href = `#`;
+			anchorEle.textContent = "Purchase"
+			imgChildEle.src = thumbnail;
+
+			cardBody.appendChild(titleEle);
+			cardBody.appendChild(descriptionEle);
+			cardBody.appendChild(anchorEle);
+
+			cardEle.appendChild(imgChildEle);
+			cardEle.appendChild(cardBody);
+			cardEle.classList.add("col", "col-sm-6", "col-md-4", "col-lg-3", "mt-4", "row-cols-auto");
+
+			return cardEle;
+		}
+
+		const getProducts = () => {
+			for(let i = 0; i < 20; i++) {
+				const ele = createProduct(data[count].name, data[count].brand, data[count].price, data[count].thumbnail);
+				products.appendChild(ele);
+				count++;
+			}
+		}
+
+		searchInput.addEventListener("input", e => {
+			count = 0;
+			resultProducts.innerHTML = "";
+			const value = searchInput.value;
+			if(value.length === 0) {
+				resultProducts.style.display = "none";
+				products.style.display = "flex";
+			} else {
+				resultProducts.style.display = "flex";
+				products.style.display = "none";
+			}
+
+			const filterArr = data.filter(d => {
+				return d.name.toLowerCase().includes(value.toLowerCase());
+			});
+
+			filterArr.forEach((d, i) => {
+				const ele = createProduct(d.name, d.brand, d.price, d.thumbnail);
+				resultProducts.appendChild(ele);
+			});
+		});
+
+		getProducts();
+	</script>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+	<script type="application/javascript">
+        fetch('navbar.html').then(response => response.text()).then(data => {
+                document.getElementById('navbarContainer').innerHTML = data;
+            }).catch(error => console.error('Error loading navbar:', error));
+    </script>
+
+	<script type="application/javascript">
+		fetch('footer.html').then(response => response.text()).then(data => {
+				document.getElementById('footerContainer').innerHTML = data;
+			}).catch(error => console.error('Error loading navbar:', error));
+	</script>
+
+</body>
+</html>

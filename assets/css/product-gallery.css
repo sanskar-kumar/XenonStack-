@@ -1,0 +1,156 @@
+
+* {
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+}
+/*----------------- header + nav-------------------*/
+header {
+  top: 0;
+  width: 100%;
+  background-color: #282a35;
+}
+nav {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  transition: align-items .2s;
+}
+li {
+    list-style: none;
+}
+/*---------------- breadcrumb---------------------*/
+/* Style the list */
+ul.breadcrumb {
+    flex-wrap: wrap;
+    margin-left: 7%;
+    margin-right: 7%;
+    padding: 10px 16px;
+    list-style: none;
+    background-color: #eee;
+}
+
+/* Display list items side by side */
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
+
+/* Add a slash symbol (>) before/behind each list item */
+ul.breadcrumb li+li:before {
+  padding: 8px ;
+  color: black;
+  content: ">\00a0";
+}
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+  color: #0275d8;
+  text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
+/* --------------product-gallery-------------- */
+.product-gallery-one-content-product {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+.product-gallery-one-content-product-item {
+    width: 20%;
+    padding: 50px 12px 12px;
+    border: 1px solid rgb(235, 233, 233);
+    cursor: pointer;
+}
+.product-gallery-one-content-product-item:hover {
+    box-shadow: 3px 3px 5px rgb(243, 239, 239);
+}
+.product-gallery-one-content-product-item:hover > img {
+    transform: translateY(-20px);
+}
+.product-gallery-one-content-product-item > img {
+    width: 100%;
+    transition: all 0.3s ease;
+}
+.product-gallery-one-content-product-item-text {
+    padding-top: 20px;
+}
+.product-gallery-one-content-product-item-text li {
+    margin-bottom: 6px;
+}
+.product-gallery-one-content-product-item-text li:first-child {
+    height: 30px;
+    width: 70%;
+    background-color: #DE1C05;
+    display: inline-block;
+    margin-bottom: 20px;
+    align-items: center;
+    line-height: 30px;
+    border-radius: 40px;
+}*
+.product-gallery-one-content-product-item-text li:first-child p {
+    color: #fff;
+    font-size: 12px;
+}
+.product-gallery-one-content-product-item-text li:first-child img {
+    width: 30px;
+    float: left;
+    margin-right: 6px;
+
+}
+.product-gallery-one-content-product-item-text li:nth-child(2):hover {
+
+    color: #FB6E2E;
+    
+}
+.product-gallery-one-content-product-item-textt li:nth-child(4) a {
+    text-decoration: line-through;
+    color: #333;
+    
+}
+.product-gallery-one-content-product-item-text li:nth-child(5)  {
+    font-weight: bold;
+    
+}
+.product-gallery-one-content-product-item-text li:last-child i {
+    color: #FB6E2E;
+}
+.product-gallery-one {
+    margin-top: 30px;
+}
+.product-gallery-one-content-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.product-gallery-one-content-title h2 {
+    color: #333;
+}
+.product-gallery-one-content-title ul li a {
+    color: #333;
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+.product-gallery-one-content-title ul {
+    display: flex;
+}
+.product-gallery-one-content-title ul li {
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    margin-left: 12px;
+    border-radius: 40px;
+}
+.product-gallery-one-content-title ul li:hover a {
+    color:tomato;
+}
+#nutbacktotop {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1000;
+}
