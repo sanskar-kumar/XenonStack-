@@ -1,4 +1,4 @@
-# webDesign
+# Xenonstack Assignment
 Mobile Phone Selling Webiste
 
 ![image](https://github.com/sanskar-kumar/XenonStack-/assets/82611071/ac2f6047-27ba-45ed-83fb-b3756ba30bdc)
